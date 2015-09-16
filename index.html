@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Embed een web app</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Free iframe generator">
+        <meta name="keywords" content="HTML,CSS,JavaScript,ArcGIS,WebMap,WebApp,MapStories">
+        <meta name="author" content="Antoon Uijtdehaag, Esri Nederland">
+        
+        <link rel="stylesheet" href="style.css">
+        <script>
+        function updateIFrame()
+            {
+                border = document.getElementById("border").value;
+                scrolling = document.getElementById("scrolling").value;
+
+                document.getElementById("code").value  = '<iframe '
+                document.getElementById("code").value += 'width="'+document.getElementById("Width").value+'" '
+                document.getElementById("code").value += 'height="'+document.getElementById("Height").value+'" '      
+                document.getElementById("code").value += 'frameborder="'+document.getElementById("border").value+'" '
+                document.getElementById("code").value +=  'scrolling="'+document.getElementById("scrolling").value+'" '
+                document.getElementById("code").value +=  'name="'+document.getElementById("name").value+'" '
+                document.getElementById("code").value +=  'src="'+document.getElementById("url").value+'"></iframe>'
+                document.getElementById("demo").innerHTML = document.getElementById("code").value 
+            }
+        </script>
+    </head>
+<body>
+    <div class="form-style-5">
+    <form>
+    <fieldset>
+    <legend><span class="number">1</span> Embed een web app</legend>
+    <input type="url" id="url" placeholder="Enter your url *" value="http://boston.maps.arcgis.com/apps/MapJournal/index.html?appid=b75c07c08a614210a3497ae59c56a420" onchange="updateIFrame()">
+    <input type="text" id="name" placeholder="naam *" onchange="updateIFrame()">
+   
+    <label for="borderLabel">Breedte:</label>
+    <input type="text" id="Width"  value="100%" onchange="updateIFrame()" >
+    <label for="borderLabel">Hoogte:</label>
+    <input type="text" id="Height"  value="450" onchange="updateIFrame()">
+
+    
+    <label for="scrolingLabel">Scrolbalk:</label>
+    <select id="scrolling" name="scrolling"  onchange="updateIFrame()">
+      <option value="yes">Ja</option>
+      <option value="no" selected>Nee</option>
+      <option value="auto">Automatisch</option>
+    </select>    
+    
+  
+    <label for="borderLabel">Kader:</label>
+    <select id="border" name="border" onchange="updateIFrame()">
+      <option value="0" selected>geen</option>
+      <option value="1">ja</option>
+    </select>   
+    </fieldset>
+    
+    <fieldset>
+    <legend><span class="number">2</span>Voorvertoning</legend>
+    <div id="demo">
+    <iframe width="100%" height="450px" frameborder="0" scrolling="no"  src="http://boston.maps.arcgis.com/apps/MapJournal/index.html?appid=b75c07c08a614210a3497ae59c56a420"></iframe>
+    </div>
+    </fieldset>
+        <fieldset>
+    <legend><span class="number">3</span>Kopieer en plak de volgende html code</legend>
+    <textarea rows="5" id="code" name="code" placeholder="code" disabled> <iframe width="500" height="400" frameborder="0" scrolling="no" src="http://boston.maps.arcgis.com/apps/MapJournal/index.html?appid=b75c07c08a614210a3497ae59c56a420"></iframe></textarea>
+    </fieldset>
+    </form>     
+</body>
+</html>
